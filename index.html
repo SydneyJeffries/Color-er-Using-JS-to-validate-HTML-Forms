@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+
+ html, body {
+     height: 100%;
+
+     background-color: white;
+ }   
+
+.container {
+    width: 100%;
+    height: 25%;
+}
+
+.container-middle {
+    z-index: 100;
+}
+
+.container-darkoverlay{
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    display: block;
+}
+
+form {
+    margin-left: 43%;
+   
+}
+
+input {
+    width: 5rem;
+    height: 5rem;
+}
+
+.chosenColorDisplay-unchanged {
+    Width: 100%;
+    height: 25%;
+  
+
+}
+
+</style>
+</head>
+<body id="theBody">
+<div class="container container-middle" id="chosenColorDisplay">
+<div class="container container-darkoverlay" id="darkOverlay">  </div>
+</div>
+<div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged"></div>
+<form >
+        <input type="color" autofocus="true"  id="colorInput">
+        <input type="range" min="0" max="20" value="10" step="1" id="range">
+</form>
+
+<script>
+// an array of functions to match the value of the range. an array b.c object's can't have #s as keynames. 
+//this array will point to the object with the methods
+const colorInput = document.getElementById("colorInput");
+const range = document.getElementById("range");
+const body =  document.getElementById("theBody");
+const colorDisplay = document.getElementById("chosenColorDisplay");
+const darkOverlay = document.getElementById("darkOverlay");
+const unchangedColor = document.getElementById("chosenColorDisplayUnchanged");
+ //"said can't access before objc defined" // , changeColors.dark1 , changeColors.dark2 , changeColors.dark3 , changeColors.dark4 ]
+
+
+let changeColors = {
+     // lightest to darkest
+    light10: function(value){
+     colorDisplay.style.opacity =".5"
+    },
+    light9:function(value){
+     colorDisplay.style.opacity = "0.1"; 
+    },
+    light8: function(value){
+     colorDisplay.style.opacity = "0.2"; 
+    },
+    light7: function(value){
+     colorDisplay.style.opacity = "0.3"; 
+    },
+    light6: function(value){
+     colorDisplay.style.opacity = "0.4"; 
+    },
+    light5: function(value){
+     colorDisplay.style.opacity = "0.5"; 
+    },
+    light4: function(value){
+        colorDisplay.style.opacity = "0.6";
+     },                                     
+     light3: function(value){
+        colorDisplay.style.opacity = "0.7";
+     },
+     light2: function(value){
+        colorDisplay.style.opacity = "0.8";
+     },
+     light1: function(value){
+        colorDisplay.style.opacity = "0.9"; 
+     },
+     dark1: function(){
+         darkOverlay.style.opacity = "0.1";
+         darkOverlay.style.backgroundColor = "#111111";      
+     },
+     dark2: function(){
+         darkOverlay.style.opacity = "0.2";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+     dark3: function(){
+         darkOverlay.style.opacity = "0.3";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+     dark4:  function(){
+         darkOverlay.style.opacity = "0.4";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark5: function(){
+         darkOverlay.style.opacity = "0.5";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark6:  function(){
+         darkOverlay.style.opacity = "0.6";
+         darkOverlay.style.backgroundColor = "#111111";  
+     },
+    dark7:  function(){
+         darkOverlay.style.opacity = "0.7";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark8: function(){
+         darkOverlay.style.opacity = "0.8";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark9:   function(){
+         darkOverlay.style.opacity = "0.9";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark10:  function(){
+         darkOverlay.style.opacity = "1.0";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+
+}
+
+// light10 is the lighest of the lighest 
+const findColorFunction = [changeColors.light10,changeColors.light9,changeColors.light8,changeColors.light7,changeColors.light6,changeColors.light5,changeColors.light4,changeColors.light3,changeColors.light2,changeColors.light1]
+// dark10 is the darkest of the darkest
+const findDarkColor = [changeColors.dark1, changeColors.dark2, changeColors.dark3, changeColors.dark4, changeColors.dark5, changeColors.dark6, changeColors.dark7, changeColors.dark8, changeColors.dark9, changeColors.dark10 ]
+
+document.addEventListener('input', function (event) {
+ if (!event.target.matches('#colorInput')) return;
+colorDisplay.style.backgroundColor = event.target.value
+unchangedColor.style.backgroundColor = event.target.value
+});
+
+document.addEventListener('input', function(event){
+    if (!event.target.matches('#range')) return;
+    console.log(event.target.value)
+
+    if (event.target.value < 10){
+        // color lighter
+    findColorFunction[event.target.value]()
+    }
+     if (event.target.value == 10) {
+        // return to selected color 
+        colorDisplay.style.opacity = "1.0";
+     }
+     if (event.target.value > 10){
+        // color darker
+        let newValue = event.target.value - 11;
+        console.log(newValue)
+    findDarkColor[newValue]()
+     }
+   
+});
+
+console.log(findColorFunction.length)
+
+
+ </script>
+
+</body>
+</html>
