@@ -49,6 +49,19 @@ input {
 
 }
 
+#commentary{
+    display: block;
+ 
+    animation: 3s ease-in 2;
+}
+
+
+
+@keyframes fadeIn {
+    0 {color:white;},
+    %100 {color:black;}
+}
+
 </style>
 </head>
 <body id="theBody">
@@ -57,8 +70,9 @@ input {
 </div>
 <div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged"></div>
 <form >
-        <input type="color" autofocus="true"  id="colorInput">
-        <input type="range" min="0" max="20" value="10" step="1" id="range">
+        <input type="color" autofocus="true"  id="colorInput"> 
+        <input type="range" min="0" max="19" value="10" step="1" id="range"> 
+        <span class="" id="commentary" > Choose the color! </span>
 </form>
 
 <script>
@@ -70,8 +84,16 @@ const body =  document.getElementById("theBody");
 const colorDisplay = document.getElementById("chosenColorDisplay");
 const darkOverlay = document.getElementById("darkOverlay");
 const unchangedColor = document.getElementById("chosenColorDisplayUnchanged");
+const commentary = document.getElementById("commentary");
  //"said can't access before objc defined" // , changeColors.dark1 , changeColors.dark2 , changeColors.dark3 , changeColors.dark4 ]
+function makeDefaultColor(){
+let defaultColor = "#ff8080";
+unchangedColor.style.backgroundColor = defaultColor
+colorInput.value = defaultColor
+colorDisplay.style.backgroundColor = defaultColor
+}
 
+window.addEventListener("load", makeDefaultColor, false)
 
 let changeColors = {
      // lightest to darkest
@@ -157,6 +179,13 @@ document.addEventListener('input', function (event) {
  if (!event.target.matches('#colorInput')) return;
 colorDisplay.style.backgroundColor = event.target.value
 unchangedColor.style.backgroundColor = event.target.value
+commentary.innerText = "";
+function changeCommentary(){
+    commentary.style.animationName = "fadeIn";
+    commentary.innerText = "adjust the bar!";       
+}
+changeCommentary()
+//setTimeout(changeCommentary, 1200)
 });
 
 document.addEventListener('input', function(event){
