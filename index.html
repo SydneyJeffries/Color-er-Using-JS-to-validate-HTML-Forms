@@ -34,13 +34,19 @@ input {
 }
 
 form {
-    margin-left: 43%;
+  
    
 }
 
 input {
-    width: 5rem;
-    height: 5rem;
+    margin-left: 43%;
+  
+}
+
+#range {
+    width: 10rem;
+    margin-left: 41%;
+  
 }
 
 .chosenColorDisplay-unchanged {
@@ -54,12 +60,14 @@ input {
     display: block;
     margin-top: 1rem;
     animation: 3s ease-in 2;
+    margin-left: 42%;
 }
 
 #hexcodePlace, #hexcodePlace2 {
     margin-top: .1rem;
     height: 1rem;
     font-size: 1rem;
+    width: 5rem;
 }
 
 @keyframes fadeIn {
@@ -70,6 +78,32 @@ input {
 .rangeValue {
     padding-left: 2rem;
     padding-bottom: 2rem;
+    margin-left: 42%
+}
+
+#pins-container {
+    margin-left: 21%;
+    max-width: 1708px;
+ 
+}
+
+@media only screen and (max-width: 900px) {
+    #pins-container {
+    margin-left: 3%;
+    max-width: 1708px; }
+
+}
+ #colorInput {
+    width: 5rem;
+    height: 5rem;
+}
+
+#getPins {
+    display:block;
+    margin-left:42%;
+    width: 8rem;
+    height: 1.5rem;
+    font-size: 1rem;
 }
 
 
@@ -81,17 +115,50 @@ input {
 <div class="container container-darkoverlay" id="darkOverlay">  </div>
 </div>
 <div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged"></div>
-<form >
-        <input type="color" autofocus="true"  id="colorInput"> 
+<form action="/PinterestPins.html" method="GET">
+        <input type="color" autofocus="true" id="colorInput"> 
         <span class="" id="commentary" > Choose the color! </span>
         <input type="range" min="0" max="19" value="10" step="1" id="range"> 
         <span class="rangeValue" id="rangeValue"> </span>
         <label name="adjusted value"><input type="text" id="hexcodePlace2"></label>
-        <label name="hexcode"><input type="text"  id="hexcodePlace" > </label>
-       
+        <label name="hexcode"><input type="text"  id="hexcodePlace" > </label>     
+        <select id="getPins">
+                <option value="coral">Get Inspired</option>
+                <option value="pink">Pink</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+            </select>
 </form>
 
+<section id="pins-container" >
+
+<a href="https://www.pinterest.com/squidney4u/coral/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180">  <!--! is alraedy mobile responsive-->
+</a>
+
+
+
+
+</section>
+
+
+<script
+    type="text/javascript"
+    async defer
+    src="//assets.pinterest.com/js/pinit.js"
+></script>
+
+
+
 <script>
+
 // an array of functions to match the value of the range. an array b.c object's can't have #s as keynames. 
 //this array will point to the object with the methods
 const colorInput = document.getElementById("colorInput");
@@ -105,6 +172,9 @@ const commentary = document.getElementById("commentary");
 const hexCode = document.getElementById("hexcodePlace");
 const hexCode2 = document.getElementById("hexcodePlace2");
  //"said can't access before objc defined" // , changeColors.dark1 , changeColors.dark2 , changeColors.dark3 , changeColors.dark4 ]
+//let xhttp = new XMLHttpRequest();
+
+
 function makeDefaultColor(){
 let defaultColor = "#FF8080";
 hexCode2.value = defaultColor;
@@ -141,6 +211,13 @@ const trimedRGB = RGBA.slice(whereSlice, 17)    //// ^^ we need to add the A
 return  RGBA + trimedRGB  + "," + opacity + ")"
 }
 
+function RGBToHex(opacityString) {
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+}
 
 let changeColors = {
      // lightest to darkest
@@ -156,84 +233,48 @@ let changeColors = {
     colorDisplay.style.opacity =".05"
     },
     light9:function(value){
-    const opacityString = "0.1";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    let opacityString = "0.1";
+    RGBToHex(opacityString); 
     colorDisplay.style.opacity = "0.1"; 
     },
     light8: function(value){
     const opacityString = "0.2";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.2"; 
     },
     light7: function(value){
-    const opacityString = "0.3";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue  
+    opacityString = "0.3";
+    RGBToHex(opacityString);
      colorDisplay.style.opacity = "0.3"; 
     },
     light6: function(value){
      const opacityString = "0.4";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+     RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.4"; 
     },
     light5: function(value){
     const opacityString = "0.5";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.5"; 
     },
     light4: function(value){
-    const opacityString = "0.4";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    const opacityString = "0.6";
+    RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.6";
      },                                     
      light3: function(value){
     const opacityString = "0.7";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.7";
      },
      light2: function(value){
     const opacityString = "0.8";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.8";
      },
      light1: function(value){
     const opacityString = "0.9";
-    const RGBvalue = colorDisplay.style.backgroundColor  
-    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
-    hexCode2.value = hexValue
+    RGBToHex(opacityString);
     colorDisplay.style.opacity = "0.9"; 
      },
      dark1: function(){
@@ -324,10 +365,53 @@ document.addEventListener('input', function(event){
    
 });
 
-console.log(findColorFunction.length)
+// ajax requests make for pins 
+// if this doesn't work see how to get to work on local server.. that maybe the issue
+// we should only be able to grab purple rn
+// document.addEventListener('change', function(event){
+// console.log('grab')
+// xhttp.onload = function() {
+//     if(xhttp.status === 200) {
+//         document.getElementById('pins-container').innerHTML = xhttp.responseText
+//     }
+//     if(xhttp.status === 404 || xhttp.status === 500) {
+//         return
+//     }
+//     else{
+//      document.getElementById('pins-container').innerHTML = xhttp.responseText
+//     }
+// }
 
+// xhttp.open('GET', 'PinterestPins.html', true);
+// xhttp.send(null);
+// });
+// ajax might not be the best method... will try the new fetch API
+// 
+
+// event listener to fetch data
+document.addEventListener('change', function(event){
+
+var myInit = {
+
+    Mode: 'same-origin ' 
+  
+}
+
+var myRequest = new Request('PinterestPins.json', myInit)
+fetch(myRequest).then((resp)=> resp.json())
+.then(function(resp){
+document.getElementById('pins-container').innerHTML= resp[purple]
+})
+.catch(function(error){
+    document.getElementById('pins-container').innerText = "Sorry, Request Failed"
+});
+
+}); 
 
  </script>
+
+
+
 
 </body>
 </html>
