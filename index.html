@@ -135,9 +135,10 @@ function rgbaToHex (rgba) {
 function RGBToRGBA(RGB,opacity) {
 // rgb value passed in is string that looks like: rgb(000,000,000)
 // we need to trim string and add opacity to look liek : RgbA(000,000,000,0.0)
-const whereSlice = RGB.lastIndexOf(")")
-let trimedRGB = RGB.slice(whereSlice, 17)    //// ^^ we need to add the A 
-return  RGB + trimedRGB  + "," + opacity + ")"
+const RGBA = RGB.replace("rgb", "rgba");
+const whereSlice = RGBA.lastIndexOf(")")
+const trimedRGB = RGBA.slice(whereSlice, 17)    //// ^^ we need to add the A 
+return  RGBA + trimedRGB  + "," + opacity + ")"
 }
 
 
@@ -150,38 +151,90 @@ let changeColors = {
     console.log ('this is rgba ' + RGBAvalue);
     const trimValue = trim(RGBAvalue); 
     console.log('this is trim ' + trimValue);
-    const hexValue  = rgbaToHex(trimValue);
-   
+    const hexValue  = rgbaToHex(trimValue);  
     hexCode2.value = hexValue
-     colorDisplay.style.opacity =".05"
+    colorDisplay.style.opacity =".05"
     },
     light9:function(value){
-    
+    const opacityString = "0.1";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
     colorDisplay.style.opacity = "0.1"; 
     },
     light8: function(value){
-     colorDisplay.style.opacity = "0.2"; 
+    const opacityString = "0.2";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.2"; 
     },
     light7: function(value){
+    const opacityString = "0.3";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue  
      colorDisplay.style.opacity = "0.3"; 
     },
     light6: function(value){
-     colorDisplay.style.opacity = "0.4"; 
+     const opacityString = "0.4";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.4"; 
     },
     light5: function(value){
-     colorDisplay.style.opacity = "0.5"; 
+    const opacityString = "0.5";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.5"; 
     },
     light4: function(value){
-        colorDisplay.style.opacity = "0.6";
+    const opacityString = "0.4";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.6";
      },                                     
      light3: function(value){
-        colorDisplay.style.opacity = "0.7";
+    const opacityString = "0.7";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.7";
      },
      light2: function(value){
-        colorDisplay.style.opacity = "0.8";
+    const opacityString = "0.8";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.8";
      },
      light1: function(value){
-        colorDisplay.style.opacity = "0.9"; 
+    const opacityString = "0.9";
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    const trimValue = trim(RGBAvalue); 
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity = "0.9"; 
      },
      dark1: function(){
          darkOverlay.style.opacity = "0.1";
