@@ -86,8 +86,9 @@ input {
         <span class="" id="commentary" > Choose the color! </span>
         <input type="range" min="0" max="19" value="10" step="1" id="range"> 
         <span class="rangeValue" id="rangeValue"> </span>
+        <label name="adjusted value"><input type="text" id="hexcodePlace2"></label>
         <label name="hexcode"><input type="text"  id="hexcodePlace" > </label>
-        <label name="adjusted"><input type="text" id="hexcodePlace2"></label>
+       
 </form>
 
 <script>
@@ -113,17 +114,50 @@ colorInput.value = defaultColor
 colorDisplay.style.backgroundColor = defaultColor
 
 }
-
 window.addEventListener("load", makeDefaultColor, false)
+
+/// the bellow functions are to convert RGBA to hex
+function trim (str) {
+  return str.replace(/^\s+|\s+$/gm,'');
+}
+function rgbaToHex (rgba) {
+    var parts = rgba.substring(rgba.indexOf("(")).split(","),
+        r = parseInt(trim(parts[0].substring(1)), 10),
+        g = parseInt(trim(parts[1]), 10),
+        b = parseInt(trim(parts[2]), 10),
+        a = parseFloat(trim(parts[3].substring(0, parts[3].length - 1))).toFixed(2);
+    return ('#' + r.toString(16) + g.toString(16) + b.toString(16) + (a * 255).toString(16).substring(0,2));
+}
+
+
+
+//convert RGB to RGBA
+function RGBToRGBA(RGB,opacity) {
+// rgb value passed in is string that looks like: rgb(000,000,000)
+// we need to trim string and add opacity to look liek : RgbA(000,000,000,0.0)
+const whereSlice = RGB.lastIndexOf(")")
+let trimedRGB = RGB.slice(whereSlice, 17)    //// ^^ we need to add the A 
+return  RGB + trimedRGB  + "," + opacity + ")"
+}
+
 
 let changeColors = {
      // lightest to darkest
-    light10: function(value){
-     
+    light10: function(){
+    const opacityString = ".05";
+    const RGBvalue = colorDisplay.style.backgroundColor  //returns a rgb string value that we need to trim-up and add opacity 
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    console.log ('this is rgba ' + RGBAvalue);
+    const trimValue = trim(RGBAvalue); 
+    console.log('this is trim ' + trimValue);
+    const hexValue  = rgbaToHex(trimValue);
+   
+    hexCode2.value = hexValue
      colorDisplay.style.opacity =".05"
     },
     light9:function(value){
-     colorDisplay.style.opacity = "0.1"; 
+    
+    colorDisplay.style.opacity = "0.1"; 
     },
     light8: function(value){
      colorDisplay.style.opacity = "0.2"; 
@@ -202,6 +236,7 @@ document.addEventListener('input', function (event) {
 colorDisplay.style.backgroundColor = event.target.value
 unchangedColor.style.backgroundColor = event.target.value
 hexCode.value = event.target.value
+//let chosenHex = event.target.value;
 commentary.innerText = "";
 function changeCommentary(){
     commentary.style.animationName = "fadeIn";
@@ -209,6 +244,8 @@ function changeCommentary(){
 }
 changeCommentary()
 //setTimeout(changeCommentary, 1200)
+//return  function grabchosenHex(chosenHex){ return chosenHex } // do i return the hex value from the event or grab it off the css element?
+
 });
 
 document.addEventListener('input', function(event){
