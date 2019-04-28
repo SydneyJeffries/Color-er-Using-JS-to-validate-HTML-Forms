@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Color-er</title>
+    
+<style>
+
+
+
+
+
+
+
+ html, body {
+     height: 100%;
+    font-size: 1rem;
+     background-color: white;
+ }   
+
+.container {
+    width: 100%;
+    height: 25%;
+}
+
+.container-middle {
+    z-index: 100;
+}
+
+.container-darkoverlay{
+    z-index: 200;
+    width: 100%;
+    height: 100%;
+}
+
+input {
+    display: block;
+}
+
+fieldset {
+    border:none;
+   display: block;
+   
+    
+}
+
+input {
+    margin-left: 43%;
+  
+}
+
+#range {
+    width: 10rem;
+    margin-left: 41%;
+  
+}
+
+.chosenColorDisplay-unchanged {
+    Width: 100%;
+    height: 15%;
+  
+
+}
+
+#commentary{
+    display: block;
+    color: transparent;
+    margin-top: 1rem;
+   
+    animation: blink 1.2s linear 6 forwards;
+    margin-left: 42%;
+}
+
+#commentary2 {
+    display: block;
+    visibility: hidden;
+    color:transparent;
+    margin-top: 1rem;
+   animation: blink 1.2s linear 6 forwards;
+   margin-left: 42%;
+}
+
+@keyframes blink {
+    0% {color: transparent}
+    100%{color: black;}
+}
+
+#hexcodePlace, #hexcodePlace2 {
+    margin-top: .1rem;
+    height: 1rem;
+    font-size: 1rem;
+    width: 5rem;
+    margin-left:43%;
+    /* position: relative;
+    left: -2rem */
+   
+}
+
+
+
+
+
+#rangeValue {
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    margin-left: 42%;
+    display: block;
+    height: 1rem;
+}
+
+
+
+#colorInput {
+    width: 5rem;
+    height: 5rem;
+}
+
+#getPins {
+    display:block;
+    margin-left:42%;
+    width: 8rem;
+    height: 1.5rem;
+    font-size: 1rem;
+}
+
+.remove {
+   visibility: hidden; 
+    position: absolute;
+    top: 0;
+}
+
+
+.pins-container-active {
+    margin-left: 3%;
+    max-width: 1708px; }
+
+
+@media only screen and (min-width: 1500px) {
+ 
+    fieldset{
+    display: inline-block;
+    }
+
+  .pins-container-active {
+    display:inline-block;
+    text-align:center;
+    width: 1708px; 
+   margin-left: 8%;
+  margin-right: auto; */
+  
+  }
+ 
+ .pins-container-margin {
+     margin-left: 10%
+ }
+
+ #colorInput{
+     position:relative;
+     display:inline-block;
+     margin-top:2rem;
+     width:12.2rem;
+     height:9rem;
+ }
+
+ input {
+     margin-left: 0rem;
+ }
+
+ form {
+     margin-left: 18%;
+
+ }
+
+ #rangeValue{
+     display:inline;
+     margin-left: 0;
+     position: relative;
+     top: -3rem;
+     left: -21rem;
+    
+ }
+
+ .hexBox , #hexcodePlace , #hexcodePlace2 {
+    width: 6.5rem;
+    height: 2.2rem; 
+    box-sizing: border-box;
+    padding-left: .3rem;
+    font-size: 1.2;
+    position: relative;
+    top: -2rem;
+ }
+
+ #hexcodePlace2 {
+     margin-bottom:1.2rem;
+ }
+
+ fieldset {
+     padding-bottom:5rem;
+ }
+
+ #range {
+     width:29.5rem;
+     display:inline-block;
+     margin-left:8%;
+     margin-right:8%;
+     position:relative;
+     top: -4rem;
+     
+ }
+
+ 
+
+ #commentary {
+     display:block;
+     position:absolute;
+     left: -15rem;
+    top: 20rem;
+     z-index: 1100;
+     font-size: 1.2rem;
+
+ }
+
+ #commentary2 {
+
+    position: absolute;
+    top: 18rem;
+    font-size: 1.3rem;
+ }
+}
+
+
+</style>
+</head>
+
+<body id="theBody">
+<div class="container container-middle" id="chosenColorDisplay">
+<div class="container container-darkoverlay" id="darkOverlay">  </div>
+</div>
+<div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged"></div>
+<form action="/PinterestPins.html" method="GET">
+        <input type="color" autofocus="true" id="colorInput"> 
+        <span class="" id="commentary" > Choose the color! </span>
+        <span class="" id="commentary2"> Adjust the bar!</span> 
+        <input type="range" min="0" max="19" value="10" step="1" id="range"> 
+        <span class="rangeValue" id="rangeValue"> </span>
+
+        <fieldset>
+        <input type="text" class="hexbox" id="hexcodePlace2">
+        <input type="text" class="hexbox"  id="hexcodePlace" > 
+        </fieldset>
+        <select id="getPins">
+                <option value="coral">Get Inspired</option>
+                <option value="pink">Pink</option>
+                <option value="red">Red</option>
+                <option value="orange">Orange</option>
+                <option value="yellow">Yellow</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+                <option value="purple">Purple</option>
+            </select>
+</form>
+
+
+<section class="  pins-container-active" id="coral" >
+
+<a href="https://www.pinterest.com/squidney4u/coral/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180">  
+</a> 
+</section>
+<section class=" remove pins-container-margin" id="pink">
+    <a href="https://www.pinterest.com/squidney4u/pinks/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a>
+
+</section>
+<secttion class="remove pins-container-margin" id="red">
+    <a href="https://www.pinterest.com/squidney4u/reds/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180">
+</a>
+</secttion>
+<section class="remove pins-container-margin" id="orange">
+    <a href="https://www.pinterest.com/squidney4u/oranges/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a>
+  
+</section>
+<section class="remove pins-container-margin" id="yellow">
+    <a href="https://www.pinterest.com/squidney4u/yellows-and-yellow-meaning/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a>
+</section>
+<section class="remove pins-container-margin" id="green">
+    <a href="https://www.pinterest.com/squidney4u/greens/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a> 
+</section>
+<section class="remove pins-container-margin " id="blue">
+    <a href="https://www.pinterest.com/squidney4u/blue/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180">
+</a>
+</section>
+<section class="remove pins-container-margin" id="purple">
+    <a href="https://www.pinterest.com/squidney4u/purple/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180"> 
+</a>
+</section>
+
+
+<script
+    type="text/javascript"
+    async defer
+    src="//assets.pinterest.com/js/pinit.js"
+></script>
+
+
+
+<script>
+
+// an array of functions to match the value of the range. an array b.c object's can't have #s as keynames. 
+//this array will point to the object with the methods
+const colorInput = document.getElementById("colorInput");
+const range = document.getElementById("range");
+const rangeValue = document.getElementById("rangeValue");
+const body =  document.getElementById("theBody");
+const colorDisplay = document.getElementById("chosenColorDisplay");
+const darkOverlay = document.getElementById("darkOverlay");
+const unchangedColor = document.getElementById("chosenColorDisplayUnchanged");
+const commentary = document.getElementById("commentary");
+const commentary2 = document.getElementById("#commentary2");
+const hexCode = document.getElementById("hexcodePlace");
+const hexCode2 = document.getElementById("hexcodePlace2");
+ //"said can't access before objc defined" // , changeColors.dark1 , changeColors.dark2 , changeColors.dark3 , changeColors.dark4 ]
+//let xhttp = new XMLHttpRequest();
+const getPins = document.getElementById('getPins');
+const pinsContainer = document.getElementById('pins-container') // some long class name i found in the dev tools that describes the <a from the html
+const coral = document.getElementById('coral');
+
+function makeDefaultColor(){
+let defaultColor = "#FF8080";
+hexCode2.value = defaultColor;
+hexCode.value = defaultColor;
+unchangedColor.style.backgroundColor = defaultColor
+colorInput.value = defaultColor
+colorDisplay.style.backgroundColor = defaultColor
+
+}
+window.addEventListener("load", makeDefaultColor, false)
+
+// the bellow functions are to convert RGBA to hex
+function trim (str) {
+  return str.replace(/^\s+|\s+$/gm,'');
+}
+function rgbaToHex (rgba) {
+    var parts = rgba.substring(rgba.indexOf("(")).split(","),
+        r = parseInt(trim(parts[0].substring(1)), 10),
+        g = parseInt(trim(parts[1]), 10),
+        b = parseInt(trim(parts[2]), 10),
+        a = parseFloat(trim(parts[3].substring(0, parts[3].length - 1))).toFixed(2);
+    return ('#' + r.toString(16) + g.toString(16) + b.toString(16) + (a * 255).toString(16).substring(0,2));
+}
+
+
+
+
+
+//convert RGB to RGBA
+function RGBToRGBA(RGB,opacity) {
+// rgb value passed in is string that looks like: rgb(000,000,000)
+// we need to trim string and add opacity to look liek : RgbA(000,000,000,0.0)
+const RGBA = RGB.replace("rgb", "rgba");
+const whereSlice = RGBA.lastIndexOf(")")
+// const trimedRGB = RGBA.slice(whereSlice)    //// ^^ we need to add the A 
+let removefromArray = RGBA.split();
+delete removefromArray[whereSlice] 
+//console.log('this is new RGBA array' + removefromArray)
+const returnRGBA = removefromArray.join()
+//console.log('this is returnRBGA value' + returnRGBA)
+//return  RGBA + trimedRGB  + "," + opacity + ")"
+return returnRGBA + "," + opacity + ")"
+}
+
+function RGBToHex(opacityString) {
+    const RGBvalue = colorDisplay.style.backgroundColor  
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    //const trimValue = trim(RGBAvalue); 
+   // const hexValue  = rgbaToHex(trimValue);  // im getting the same results w/o it's trimmed
+    const hexValue  = rgbaToHex(RGBAvalue);  
+    hexCode2.value = hexValue
+   
+}
+
+let changeColors = {
+     // lightest to darkest
+    light10: function(){
+    const opacityString = ".05";
+    const RGBvalue = colorDisplay.style.backgroundColor  //returns a rgb string value that we need to trim-up and add opacity 
+    const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
+    console.log ('this is rgba ' + RGBAvalue);
+    const trimValue = trim(RGBAvalue); 
+    console.log('this is trim ' + trimValue);
+    const hexValue  = rgbaToHex(trimValue);  
+    hexCode2.value = hexValue
+    colorDisplay.style.opacity =".05"
+    },
+    light9:function(value){
+    let opacityString = "0.1";
+    RGBToHex(opacityString); 
+    colorDisplay.style.opacity = "0.1"; 
+    },
+    light8: function(value){
+    const opacityString = "0.2";
+    RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.2"; 
+    },
+    light7: function(value){
+    opacityString = "0.3";
+    RGBToHex(opacityString);
+     colorDisplay.style.opacity = "0.3"; 
+    },
+    light6: function(value){
+     const opacityString = "0.4";
+     RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.4"; 
+    },
+    light5: function(value){
+    const opacityString = "0.5";
+    RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.5"; 
+    },
+    light4: function(value){
+    const opacityString = "0.6";
+    RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.6";
+     },                                     
+     light3: function(value){
+    const opacityString = "0.7";
+    RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.7";
+     },
+     light2: function(value){
+    const opacityString = "0.8";
+    RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.8";
+     },
+     light1: function(value){
+    const opacityString = "0.9";
+    RGBToHex(opacityString);
+    colorDisplay.style.opacity = "0.9"; 
+     },
+     dark1: function(){
+         darkOverlay.style.opacity = "0.1";
+         darkOverlay.style.backgroundColor = "#111111";      
+     },
+     dark2: function(){
+         darkOverlay.style.opacity = "0.2";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+     dark3: function(){
+         darkOverlay.style.opacity = "0.3";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+     dark4:  function(){
+         darkOverlay.style.opacity = "0.4";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark5: function(){
+         darkOverlay.style.opacity = "0.5";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark6:  function(){
+         darkOverlay.style.opacity = "0.6";
+         darkOverlay.style.backgroundColor = "#111111";  
+     },
+    dark7:  function(){
+         darkOverlay.style.opacity = "0.7";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark8: function(){
+         darkOverlay.style.opacity = "0.8";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+    dark9:   function(){
+         darkOverlay.style.opacity = "0.85";
+         darkOverlay.style.backgroundColor = "#111111";  
+     },  
+    dark10:  function(){
+         darkOverlay.style.opacity = "1.0";
+         darkOverlay.style.backgroundColor = "#111111";  
+     }, 
+
+}
+
+// light10 is the lighest of the lighest 
+const findColorFunction = [changeColors.light10,changeColors.light9,changeColors.light8,changeColors.light7,changeColors.light6,changeColors.light5,changeColors.light4,changeColors.light3,changeColors.light2,changeColors.light1]
+// dark10 is the darkest of the darkest
+const findDarkColor = [changeColors.dark1, changeColors.dark2, changeColors.dark3, changeColors.dark4, changeColors.dark5, changeColors.dark6, changeColors.dark7, changeColors.dark8, changeColors.dark9, changeColors.dark10 ]
+
+document.addEventListener('input', function (event) {
+ if (!event.target.matches('#colorInput')) return;
+colorDisplay.style.backgroundColor = event.target.value
+unchangedColor.style.backgroundColor = event.target.value
+hexCode.value = event.target.value
+//let chosenHex = event.target.value;
+commentary.innerText = "";
+function changeCommentary(){
+    commentary.style.display = "hidden";
+    commentary2.style.display = "hidden";
+    //visibility = "visible";
+    //commentary2.innerText = "Adjust the bar!";       // it doesn't  matter that I'm using innerText b/c i don't have a back-end
+}
+changeCommentary()
+//setTimeout(changeCommentary, 1200)
+//return  function grabchosenHex(chosenHex){ return chosenHex } // do i return the hex value from the event or grab it off the css element?
+
+});
+
+document.addEventListener('input', function(event){
+    if (!event.target.matches('#range')) return;
+    console.log(event.target.value)
+   
+    if (event.target.value < 10){
+        // color lighter
+    rangeValue.innerText = event.target.value + "Tone";
+    findColorFunction[event.target.value]()
+    }
+     if (event.target.value == 10) {
+        // return to selected color 
+        colorDisplay.style.opacity = "1.0";
+     }
+     if (event.target.value > 10){
+        // color darker
+        rangeValue.innerText = event.target.value -10 + " Shade";
+        let newValue = event.target.value - 11;
+        console.log(newValue)
+    findDarkColor[newValue]()
+     }
+   
+});
+
+
+
+
+
+document.addEventListener('change', function(event){
+    if (!event.target.matches('#getPins')) return;
+  
+
+    if (!coral.classList.contains("pins-container-active")) {
+        coral.classList.remove("pins-container-active")
+        coral.classList.add("remove")
+         }
+let isntActivePin = document.getElementsByClassName("pins-container-active")
+isntActivePin[0].classList.add("remove");
+isntActivePin[0].classList.remove("pins-container-active");
+
+ let isActivePin = document.getElementById(event.target.value)
+ isActivePin.classList.add("pins-container-active")
+ isActivePin.classList.remove("remove");     
+
+  
+
+})
+
+
+
+
+
+
+
+
+
+
+// ajax requests make for pins 
+// if this doesn't work see how to get to work on local server.. that maybe the issue
+// we should only be able to grab purple rn
+// document.addEventListener('change', function(event){
+// console.log('grab')
+// xhttp.onload = function() {
+//     if(xhttp.status === 200) {
+//         document.getElementById('pins-container').innerHTML = xhttp.responseText
+//     }
+//     if(xhttp.status === 404 || xhttp.status === 500) {
+//         return
+//     }
+//     else{
+//      document.getElementById('pins-container').innerHTML = xhttp.responseText
+//     }
+// }
+
+// xhttp.open('GET', 'PinterestPins.html', true);
+// xhttp.send(null);
+// });
+// ajax might not be the best method... will try the new fetch API
+// 
+
+// event listener to fetch data
+// document.addEventListener('change', function(event){
+//     if (!event.target.matches('#getPins')) return;
+// var myInit = {                                        /// fetch attempt commented out until website get's rolling 
+
+//     Mode: 'same-origin ' 
+  
+// }
+
+// var myRequest = new Request('Pins.text', myInit)
+// fetch(myRequest).then((resp)=> resp.text())
+// .then(function(resp){
+// document.getElementById('pins-container').innerHTML= resp
+// })
+
+
+
+
+// }); 
+
+
+
+
+
+ </script>
+
+
+
+
+</body>
+</html>
