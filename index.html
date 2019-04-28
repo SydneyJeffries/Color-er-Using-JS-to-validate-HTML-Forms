@@ -8,6 +8,12 @@
     
 <style>
 
+
+
+
+
+
+
  html, body {
      height: 100%;
     font-size: 1rem;
@@ -81,19 +87,9 @@ input {
     margin-left: 42%
 }
 
-#pins-container {
-    margin-left: 21%;
-    max-width: 1708px;
- 
-}
 
-@media only screen and (max-width: 900px) {
-    #pins-container {
-    margin-left: 3%;
-    max-width: 1708px; }
 
-}
- #colorInput {
+#colorInput {
     width: 5rem;
     height: 5rem;
 }
@@ -104,6 +100,29 @@ input {
     width: 8rem;
     height: 1.5rem;
     font-size: 1rem;
+}
+
+.remove {
+   visibility: hidden; 
+    position: absolute;
+    top: 0;
+}
+
+
+.pins-container-active {
+    margin-left: 3%;
+    max-width: 1708px; }
+
+
+@media only screen and (min-width: 900px) {
+  
+  .pins-container-active {
+  margin-left: 21%;
+  max-width: 1708px; }
+ 
+ .pins-container-margin {
+     margin-left: 28%
+ }
 }
 
 
@@ -134,18 +153,73 @@ input {
             </select>
 </form>
 
-<section id="pins-container" >
+
+<section class="  pins-container-active" id="coral" >
 
 <a href="https://www.pinterest.com/squidney4u/coral/"
    data-pin-do="embedBoard"
    data-pin-board-width="1000"
    data-pin-scale-height="520"
-   data-pin-scale-width="180">  <!--! is alraedy mobile responsive-->
+   data-pin-scale-width="180">  
+</a> 
+</section>
+<section class=" remove pins-container-margin" id="pink">
+    <a href="https://www.pinterest.com/squidney4u/pinks/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a>
+
+</section>
+<secttion class="remove pins-container-margin" id="red">
+    <a href="https://www.pinterest.com/squidney4u/reds/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180">
 </a>
-
-
-
-
+</secttion>
+<section class="remove pins-container-margin" id="orange">
+    <a href="https://www.pinterest.com/squidney4u/oranges/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a>
+  
+</section>
+<section class="remove pins-container-margin" id="yellow">
+    <a href="https://www.pinterest.com/squidney4u/yellows-and-yellow-meaning/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a>
+</section>
+<section class="remove pins-container-margin" id="green">
+    <a href="https://www.pinterest.com/squidney4u/greens/"
+    data-pin-do="embedBoard"
+    data-pin-board-width="1000"
+    data-pin-scale-height="520"
+    data-pin-scale-width="180">
+ </a> 
+</section>
+<section class="remove pins-container-margin " id="blue">
+    <a href="https://www.pinterest.com/squidney4u/blue/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180">
+</a>
+</section>
+<section class="remove pins-container-margin" id="purple">
+    <a href="https://www.pinterest.com/squidney4u/purple/"
+   data-pin-do="embedBoard"
+   data-pin-board-width="1000"
+   data-pin-scale-height="520"
+   data-pin-scale-width="180"> 
+</a>
 </section>
 
 
@@ -173,7 +247,9 @@ const hexCode = document.getElementById("hexcodePlace");
 const hexCode2 = document.getElementById("hexcodePlace2");
  //"said can't access before objc defined" // , changeColors.dark1 , changeColors.dark2 , changeColors.dark3 , changeColors.dark4 ]
 //let xhttp = new XMLHttpRequest();
-
+const getPins = document.getElementById('getPins');
+const pinsContainer = document.getElementById('pins-container') // some long class name i found in the dev tools that describes the <a from the html
+const coral = document.getElementById('coral');
 
 function makeDefaultColor(){
 let defaultColor = "#FF8080";
@@ -186,7 +262,7 @@ colorDisplay.style.backgroundColor = defaultColor
 }
 window.addEventListener("load", makeDefaultColor, false)
 
-/// the bellow functions are to convert RGBA to hex
+// the bellow functions are to convert RGBA to hex
 function trim (str) {
   return str.replace(/^\s+|\s+$/gm,'');
 }
@@ -201,22 +277,32 @@ function rgbaToHex (rgba) {
 
 
 
+
+
 //convert RGB to RGBA
 function RGBToRGBA(RGB,opacity) {
 // rgb value passed in is string that looks like: rgb(000,000,000)
 // we need to trim string and add opacity to look liek : RgbA(000,000,000,0.0)
 const RGBA = RGB.replace("rgb", "rgba");
 const whereSlice = RGBA.lastIndexOf(")")
-const trimedRGB = RGBA.slice(whereSlice, 17)    //// ^^ we need to add the A 
-return  RGBA + trimedRGB  + "," + opacity + ")"
+// const trimedRGB = RGBA.slice(whereSlice)    //// ^^ we need to add the A 
+let removefromArray = RGBA.split();
+delete removefromArray[whereSlice] 
+//console.log('this is new RGBA array' + removefromArray)
+const returnRGBA = removefromArray.join()
+//console.log('this is returnRBGA value' + returnRGBA)
+//return  RGBA + trimedRGB  + "," + opacity + ")"
+return returnRGBA + "," + opacity + ")"
 }
 
 function RGBToHex(opacityString) {
     const RGBvalue = colorDisplay.style.backgroundColor  
     const RGBAvalue = RGBToRGBA(RGBvalue, opacityString);
-    const trimValue = trim(RGBAvalue); 
-    const hexValue  = rgbaToHex(trimValue);  
+    //const trimValue = trim(RGBAvalue); 
+   // const hexValue  = rgbaToHex(trimValue);  // im getting the same results w/o it's trimmed
+    const hexValue  = rgbaToHex(RGBAvalue);  
     hexCode2.value = hexValue
+   
 }
 
 let changeColors = {
@@ -365,6 +451,39 @@ document.addEventListener('input', function(event){
    
 });
 
+
+
+
+
+document.addEventListener('change', function(event){
+    if (!event.target.matches('#getPins')) return;
+  
+
+    if (!coral.classList.contains("pins-container-active")) {
+        coral.classList.remove("pins-container-active")
+        coral.classList.add("remove")
+         }
+let isntActivePin = document.getElementsByClassName("pins-container-active")
+isntActivePin[0].classList.add("remove");
+isntActivePin[0].classList.remove("pins-container-active");
+
+ let isActivePin = document.getElementById(event.target.value)
+ isActivePin.classList.add("pins-container-active")
+ isActivePin.classList.remove("remove");     
+
+  
+
+})
+
+
+
+
+
+
+
+
+
+
 // ajax requests make for pins 
 // if this doesn't work see how to get to work on local server.. that maybe the issue
 // we should only be able to grab purple rn
@@ -389,24 +508,28 @@ document.addEventListener('input', function(event){
 // 
 
 // event listener to fetch data
-document.addEventListener('change', function(event){
+// document.addEventListener('change', function(event){
+//     if (!event.target.matches('#getPins')) return;
+// var myInit = {                                        /// fetch attempt commented out until website get's rolling 
 
-var myInit = {
-
-    Mode: 'same-origin ' 
+//     Mode: 'same-origin ' 
   
-}
+// }
 
-var myRequest = new Request('PinterestPins.json', myInit)
-fetch(myRequest).then((resp)=> resp.json())
-.then(function(resp){
-document.getElementById('pins-container').innerHTML= resp[purple]
-})
-.catch(function(error){
-    document.getElementById('pins-container').innerText = "Sorry, Request Failed"
-});
+// var myRequest = new Request('Pins.text', myInit)
+// fetch(myRequest).then((resp)=> resp.text())
+// .then(function(resp){
+// document.getElementById('pins-container').innerHTML= resp
+// })
 
-}); 
+
+
+
+// }); 
+
+
+
+
 
  </script>
 

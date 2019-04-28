@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
 
-<div id="purple">    
+
+'<div id="purple">    
 <a href="https://www.pinterest.com/squidney4u/purple/"
    data-pin-do="embedBoard"
    data-pin-board-width="900"
    data-pin-scale-height="320"
    data-pin-scale-width="180">
-</a>
 </div>
+
 <div id="blue">
 <a href="https://www.pinterest.com/squidney4u/blue/"
    data-pin-do="embedBoard"
@@ -24,6 +16,7 @@
    data-pin-scale-width="180">
 </a>
 </div>   <!--will need to add more wraper div-->
+
 <a href="https://www.pinterest.com/squidney4u/pinks/"
    data-pin-do="embedBoard"
    data-pin-board-width="900"
@@ -53,9 +46,4 @@
 </a>
 
 
-
-
-
-
-</body>
-</html> -->
+'
