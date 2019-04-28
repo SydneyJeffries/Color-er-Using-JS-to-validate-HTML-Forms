@@ -8,8 +8,11 @@ I started this project because I was reading about form validation and over-all 
 <p>
  Pick a color with the color picker and I'll return tones, shades, hexacodes and show you color theme inspiration. <a href="http://www.squid-inc.org/Color-ER"> View it on my new website :) </a>
    
-   
-<img src="https://i.ibb.co/B4jS3cG/Capturefinal.jpg" align="center" alt="Capturefinal" border="0">
+<p align="center" >  
+<img src="https://i.ibb.co/B4jS3cG/Capturefinal.jpg"  alt="Capturefinal" border="0">
+  </p>
+ <p align="center" > 
 <img src="https://i.ibb.co/Q88CySv/Pic-of-draft.png" alt="Pic-of-draft" align="center"  border="0">
-<p> ** no need for bootstrap or any frame works in this project. I usually don't struggle with making things responsive in pure CSS. 
+</p>
+<p>** no need for bootstrap or any frame works in this project. I usually don't struggle with making things responsive in pure CSS. 
  I took a mobile first approach, started the styles for smaller screen sizes at the top of my style sheet and included a single media query for bigger screens. 
