@@ -14,5 +14,8 @@ I started this project because I was reading about form validation and validatio
  <p align="center" > 
 <img src="https://i.ibb.co/Q88CySv/Pic-of-draft.png" alt="Pic-of-draft" align="center"  border="0">
 </p>
+<p align="center">
+   <img src="https://i.ibb.co/8NwGx5V/design.png" alt="design" border="0">
+  </p>
 <p>** no need for Bootstrap or any frameworks in this project. I usually don't struggle with making things responsive in pure CSS. 
  I took a mobile first approach, started the styles for smaller screen sizes at the top of my style sheet and included a single media query for bigger screens. 
