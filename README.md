@@ -11,5 +11,5 @@ I started this project because I was reading about form validation and over-all 
    
 <img src="https://i.ibb.co/B4jS3cG/Capturefinal.jpg" text-align="center" alt="Capturefinal" border="0">
 <p> ** no need for bootstrap or any frame works in this project. I usually don't struggle with making things responsive in pure CSS. 
- I took a mobile first approach, started the styles for smaller screen sizes at the top of my style sheet and included a single media query for bigger screens. <p>
+ I took a mobile first approach, started the styles for smaller screen sizes at the top of my style sheet and included a single media query for bigger screens. 
 <a href="https://ibb.co/9wwVQKH"><img src="https://i.ibb.co/Q88CySv/Pic-of-draft.png" alt="Pic-of-draft" border="0"></a>
