@@ -8,5 +8,5 @@ I started this project because I was reading about form validation and over-all 
 <p>
  Pick a color with the color picker and I'll return tones, shades, hexacodes and show you color theme inspiration. View it on my new website :)
    
-    <p>
+   
 <img src="https://i.ibb.co/B4jS3cG/Capturefinal.jpg" text-align="center" alt="Capturefinal" border="0">
