@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Color-er</title>
-    
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 <style>
 
 
@@ -18,7 +19,25 @@
      height: 100%;
     font-size: 1rem;
      background-color: white;
+     font-family: 'Roboto', sans-serif;
  }   
+
+
+
+
+ .monospace {
+    font-family: 'Roboto Mono', monospace;
+ }
+
+ .stans-serif {
+    font-family: 'Roboto', sans-serif;
+ }
+
+.serif {
+    font-family: serif;
+}
+
+ 
 
 .container {
     width: 100%;
@@ -27,6 +46,12 @@
 
 .container-middle {
     z-index: 100;
+
+}
+
+.greyText {
+    color: white;
+    opacity: .5;
 }
 
 .container-darkoverlay{
@@ -71,6 +96,10 @@ input {
    
     animation: blink 1.2s linear 6 forwards;
     margin-left: 42%;
+}
+
+label {
+    display:inline;
 }
 
 #commentary2 {
@@ -130,9 +159,24 @@ input {
 #getPins {
     display:block;
     margin-left:42%;
-    width: 8rem;
+    min-width: 8rem;
     height: 1.5rem;
     font-size: 1rem;
+    opacity: .5;
+    
+}
+
+input[type=select] {
+  -webkit-appearance: none;
+  
+}
+
+#getPins:focus, #getPins:active, #getPins:hover, #getPins:link, #getPins:checked, option:checked , option:active, option:focus{
+border-color:black; 
+outline: 0;
+
+
+
 }
 
 .remove {
@@ -143,8 +187,12 @@ input {
 
 
 .pins-container-active {
-    text-align: center;
-    max-width: 1708px; }
+    /* text-align: center;
+    max-width: 1708px; */
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+     }
 
 
 @media only screen and (min-width: 1500px) {
@@ -153,12 +201,30 @@ input {
     display: inline-block;
     }
 
+    #getPins{
+        height: auto;
+        width: 15rem;
+        font-size: 1.5rem;
+        margin-left: 0;
+        overflow: hidden;
+        /* position: absolute;;
+        left: -30rem;
+        font-size: 1.5rem; */
+        min-width: 15rem;
+    }
+
+    #getPins > option{
+        padding:.4rem;
+    }
+.pins-container {
+    display:flex;
+    justify-content: c;
+}
+   
   .pins-container-active {
-    display:inline-block;
-    text-align:center;
+    min-width: 1000px;
     width: 1708px; 
-   margin-left: 8%;
-  margin-right: auto; */
+   
   
   }
  
@@ -246,9 +312,24 @@ input {
 
 <body id="theBody">
 <div class="container container-middle" id="chosenColorDisplay">
-<div class="container container-darkoverlay" id="darkOverlay">  </div>
+ 
+<div class="container container-darkoverlay" id="darkOverlay"> 
+<div class="fixedColor">
+    <span class="whiteText" style="color:white; font-size: 1.2rem; padding-left: 2rem;">#ffffff</span>
+    <span class="darkText" id="darkText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem; z-index: 2000; display:inline-block" > #222222 </span>
+    <span class="greyText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem; z-index: 2000; display:inline-block" > ffffffe5 </span>  
+</div>
+</div>
+<span class="whiteText" style="color:white; font-size: 1.2rem; padding-left: 2rem;">#ffffff</span>
+<span class="darkText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem" > #222222 </span> 
+<span class="greyText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem" > ffffffe5 </span> 
 </div>
 <div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged"></div>
+<!-- <fieldset class="radiogroup">
+ Stans-Serif: <input type="radio" value="stansSerif" name="font" label="Stans-Serif" style="display:inline"> </label>
+ Serif: <input type="radio" value="serif"      name="font" label="Serif" style="display:inline"></label> 
+ Mono:<input type="radio" value="mono"       name="font" label="Mono"style="display:inline;"></label>
+</fieldset> -->
 <form action="/PinterestPins.html" method="GET">
         <input type="color" autofocus="true" id="colorInput"> 
         <span class="" id="commentary" > Choose the color! </span>
@@ -260,9 +341,10 @@ input {
         <input type="text" class="hexbox" id="hexcodePlace2">
         <input type="text" class="hexbox"  id="hexcodePlace" > 
         </fieldset>
-        <div class="" id="commentary3">Get Inspired..</div>     
-        <select id="getPins">  
-                <option value="coral">Get Inspired</option>
+        <div class="" id="commentary3">Get Inspired..</div> 
+        <section class="pins-container">  
+        <select size="7" id="getPins" >  
+                <option value="coral">Get Inspired:</option>
                 <option value="pink">Pink</option>
                 <option value="red">Red</option>
                 <option value="orange">Orange</option>
@@ -341,7 +423,7 @@ input {
    data-pin-scale-width="180"> 
 </a>
 </section>
-
+</section>
 
 <script
     type="text/javascript"
@@ -372,6 +454,8 @@ const hexCode2 = document.getElementById("hexcodePlace2");
 const getPins = document.getElementById('getPins');
 const pinsContainer = document.getElementById('pins-container') // some long class name i found in the dev tools that describes the <a from the html
 const coral = document.getElementById('coral');
+const darkText = document.getElementById('darkText')
+const fixedColor = document.getElementById('fixedColor');
 
 function makeDefaultColor(){
 let defaultColor = "#FF8080";
@@ -424,7 +508,7 @@ function RGBToHex(opacityString) {
    // const hexValue  = rgbaToHex(trimValue);  // im getting the same results w/o it's trimmed
     const hexValue  = rgbaToHex(RGBAvalue);  
     hexCode2.value = hexValue
-   
+//    fixedColor.style.BackgroundColor = RGBAvalue
 }
 
 let changeColors = {
@@ -532,7 +616,7 @@ let changeColors = {
 const findColorFunction = [changeColors.light10,changeColors.light9,changeColors.light8,changeColors.light7,changeColors.light6,changeColors.light5,changeColors.light4,changeColors.light3,changeColors.light2,changeColors.light1]
 // dark10 is the darkest of the darkest
 const findDarkColor = [changeColors.dark1, changeColors.dark2, changeColors.dark3, changeColors.dark4, changeColors.dark5, changeColors.dark6, changeColors.dark7, changeColors.dark8, changeColors.dark9, changeColors.dark10 ]
-
+let hasCommetrun = false;
 document.addEventListener('input', function (event) {
  if (!event.target.matches('#colorInput')) return;
 colorDisplay.style.backgroundColor = event.target.value
@@ -543,9 +627,11 @@ commentary.innerText = "";
 function changeCommentary(){
     commentary.style.display = "hidden";
     commentary2.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards";
+    hasCommetrun = true;
     setTimeout(function MakeCommentDisapear(){
     commentary2.innerText="";
     }, 4200)
+    
 }
 changeCommentary()
 //setTimeout(changeCommentary, 1200)
@@ -556,12 +642,18 @@ changeCommentary()
 document.addEventListener('input', function(event){
     if (!event.target.matches('#range')) return;
     console.log(event.target.value)
-     
-    commentary3.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards";
-   
+    if (hasCommetrun) {
+        commentary2.innerText ="";  // clear comment so it doesn't flash as at the same time as the 3rd one
+    }
+    if (hasCommetrun){     // checks to see if comment2 has ran, if ran then run comment3
+    commentary3.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards"; 
+    }
+    
     setTimeout( function makeCommentInvisible() {
         commentary3.innerHTML = ""
     } , 4200)
+
+   
     if (event.target.value < 10){
         // color lighter
     rangeValue.innerText = event.target.value + "Tone";
