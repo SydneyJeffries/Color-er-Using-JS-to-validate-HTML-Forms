@@ -16,6 +16,7 @@
 
 
  html, body {
+     width: 100%;
      height: 100%;
     font-size: 1rem;
      background-color: white;
@@ -58,7 +59,10 @@
     z-index: 200;
     width: 100%;
     height: 100%;
+   
 }
+
+
 
 input {
     display: block;
@@ -79,8 +83,10 @@ input {
 #range {
     width: 10rem;
     margin-left: 41%;
-  
+   
 }
+
+
 
 .chosenColorDisplay-unchanged {
     Width: 100%;
@@ -160,7 +166,7 @@ label {
     display:block;
     margin-left:42%;
     min-width: 8rem;
-    height: 1.5rem;
+    height: 4rem;
     font-size: 1rem;
     opacity: .5;
     
@@ -180,9 +186,9 @@ outline: 0;
 }
 
 .remove {
-   visibility: hidden; 
+    visibility: hidden; 
     position: absolute;
-    top: 0;
+   
 }
 
 
@@ -311,20 +317,21 @@ outline: 0;
 </head>
 
 <body id="theBody">
-<div class="container container-middle" id="chosenColorDisplay">
+
  
+<div class="container container-middle" id="chosenColorDisplay">
+         
 <div class="container container-darkoverlay" id="darkOverlay"> 
-<div class="fixedColor">
-    <span class="whiteText" style="color:white; font-size: 1.2rem; padding-left: 2rem;">#ffffff</span>
-    <span class="darkText" id="darkText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem; z-index: 2000; display:inline-block" > #222222 </span>
-    <span class="greyText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem; z-index: 2000; display:inline-block" > ffffffe5 </span>  
 </div>
 </div>
-<span class="whiteText" style="color:white; font-size: 1.2rem; padding-left: 2rem;">#ffffff</span>
-<span class="darkText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem" > #222222 </span> 
-<span class="greyText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem" > ffffffe5 </span> 
-</div>
-<div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged"></div>
+
+<div class="chosenColorDisplay-unchanged" id="chosenColorDisplayUnchanged">
+ <div Id="fixedColor">
+     <span class="whiteText" style="color:white; font-size: 1.2rem; padding-left: 2rem;">#ffffff</span>
+     <span class="darkText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem" > #222222 </span> 
+      <span class="greyText" style="color: #222222; font-size: 1.2rem; padding-left: 2rem" > ffffffe5 </span> 
+      </div> 
+ </div>
 <!-- <fieldset class="radiogroup">
  Stans-Serif: <input type="radio" value="stansSerif" name="font" label="Stans-Serif" style="display:inline"> </label>
  Serif: <input type="radio" value="serif"      name="font" label="Serif" style="display:inline"></label> 
@@ -344,7 +351,7 @@ outline: 0;
         <div class="" id="commentary3">Get Inspired..</div> 
         <section class="pins-container">  
         <select size="7" id="getPins" >  
-                <option value="coral">Get Inspired:</option>
+                <option value="coral" disabled>Get Inspired:</option>
                 <option value="pink">Pink</option>
                 <option value="red">Red</option>
                 <option value="orange">Orange</option>
@@ -352,6 +359,7 @@ outline: 0;
                 <option value="green">Green</option>
                 <option value="blue">Blue</option>
                 <option value="purple">Purple</option>
+                <option valie="coral"> coral</option>
             </select>
 </form>
 
@@ -457,13 +465,14 @@ const coral = document.getElementById('coral');
 const darkText = document.getElementById('darkText')
 const fixedColor = document.getElementById('fixedColor');
 
+
 function makeDefaultColor(){
 let defaultColor = "#FF8080";
 hexCode2.value = defaultColor;
 hexCode.value = defaultColor;
-unchangedColor.style.backgroundColor = defaultColor
-colorInput.value = defaultColor
-colorDisplay.style.backgroundColor = defaultColor
+unchangedColor.style.backgroundColor = defaultColor;
+colorInput.value = defaultColor;
+colorDisplay.style.backgroundColor = defaultColor;
 
 }
 window.addEventListener("load", makeDefaultColor, false)
@@ -507,8 +516,8 @@ function RGBToHex(opacityString) {
     //const trimValue = trim(RGBAvalue); 
    // const hexValue  = rgbaToHex(trimValue);  // im getting the same results w/o it's trimmed
     const hexValue  = rgbaToHex(RGBAvalue);  
-    hexCode2.value = hexValue
-//    fixedColor.style.BackgroundColor = RGBAvalue
+    hexCode2.value = hexValue;
+   // fixedColor.style.BackgroundColor = RGBAvalue;
 }
 
 let changeColors = {
@@ -616,18 +625,20 @@ let changeColors = {
 const findColorFunction = [changeColors.light10,changeColors.light9,changeColors.light8,changeColors.light7,changeColors.light6,changeColors.light5,changeColors.light4,changeColors.light3,changeColors.light2,changeColors.light1]
 // dark10 is the darkest of the darkest
 const findDarkColor = [changeColors.dark1, changeColors.dark2, changeColors.dark3, changeColors.dark4, changeColors.dark5, changeColors.dark6, changeColors.dark7, changeColors.dark8, changeColors.dark9, changeColors.dark10 ]
-let hasCommetrun = false;
+let hasCommentrun = false;
 document.addEventListener('input', function (event) {
  if (!event.target.matches('#colorInput')) return;
 colorDisplay.style.backgroundColor = event.target.value
+
 unchangedColor.style.backgroundColor = event.target.value
+
 hexCode.value = event.target.value
 //let chosenHex = event.target.value;
 commentary.innerText = "";
 function changeCommentary(){
     commentary.style.display = "hidden";
     commentary2.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards";
-    hasCommetrun = true;
+    hasCommentrun = true;
     setTimeout(function MakeCommentDisapear(){
     commentary2.innerText="";
     }, 4200)
@@ -642,10 +653,10 @@ changeCommentary()
 document.addEventListener('input', function(event){
     if (!event.target.matches('#range')) return;
     console.log(event.target.value)
-    if (hasCommetrun) {
+    if (hasCommentrun) {
         commentary2.innerText ="";  // clear comment so it doesn't flash as at the same time as the 3rd one
     }
-    if (hasCommetrun){     // checks to see if comment2 has ran, if ran then run comment3
+    if (hasCommentrun){     // checks to see if comment2 has ran, if ran then run comment3
     commentary3.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards"; 
     }
     
@@ -685,6 +696,8 @@ document.addEventListener('change', function(event){
         coral.classList.remove("pins-container-active")
         coral.classList.add("remove")
          }
+
+   
 let isntActivePin = document.getElementsByClassName("pins-container-active")
 isntActivePin[0].classList.add("remove");
 isntActivePin[0].classList.remove("pins-container-active");
