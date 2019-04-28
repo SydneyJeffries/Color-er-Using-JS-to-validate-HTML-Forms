@@ -78,9 +78,17 @@ input {
     visibility: hidden;
     color:transparent;
     margin-top: 1rem;
-   animation: blink 1.2s linear 6 forwards;
+   /* animation: blink 1.2s linear 12 forwards; */
    margin-left: 42%;
 }
+
+#commentary3{
+     visibility: hidden;
+     text-align: center;
+     font-size: 1.3rem;
+    
+ }
+
 
 @keyframes blink {
     0% {color: transparent}
@@ -107,7 +115,9 @@ input {
     padding-bottom: 2rem;
     margin-left: 42%;
     display: block;
+   
     height: 1rem;
+  
 }
 
 
@@ -133,7 +143,7 @@ input {
 
 
 .pins-container-active {
-    margin-left: 3%;
+    text-align: center;
     max-width: 1708px; }
 
 
@@ -176,9 +186,9 @@ input {
  #rangeValue{
      display:inline;
      margin-left: 0;
-     position: relative;
-     top: -3rem;
-     left: -21rem;
+     position: absolute;
+     top: 20rem;
+     left: 48rem;
     
  }
 
@@ -210,7 +220,7 @@ input {
      
  }
 
- 
+
 
  #commentary {
      display:block;
@@ -223,7 +233,7 @@ input {
  }
 
  #commentary2 {
-
+    
     position: absolute;
     top: 18rem;
     font-size: 1.3rem;
@@ -250,7 +260,8 @@ input {
         <input type="text" class="hexbox" id="hexcodePlace2">
         <input type="text" class="hexbox"  id="hexcodePlace" > 
         </fieldset>
-        <select id="getPins">
+        <div class="" id="commentary3">Get Inspired..</div>     
+        <select id="getPins">  
                 <option value="coral">Get Inspired</option>
                 <option value="pink">Pink</option>
                 <option value="red">Red</option>
@@ -352,7 +363,8 @@ const colorDisplay = document.getElementById("chosenColorDisplay");
 const darkOverlay = document.getElementById("darkOverlay");
 const unchangedColor = document.getElementById("chosenColorDisplayUnchanged");
 const commentary = document.getElementById("commentary");
-const commentary2 = document.getElementById("#commentary2");
+const commentary2 = document.getElementById("commentary2");
+const commentary3 = document.getElementById("commentary3")
 const hexCode = document.getElementById("hexcodePlace");
 const hexCode2 = document.getElementById("hexcodePlace2");
  //"said can't access before objc defined" // , changeColors.dark1 , changeColors.dark2 , changeColors.dark3 , changeColors.dark4 ]
@@ -530,9 +542,10 @@ hexCode.value = event.target.value
 commentary.innerText = "";
 function changeCommentary(){
     commentary.style.display = "hidden";
-    commentary2.style.display = "hidden";
-    //visibility = "visible";
-    //commentary2.innerText = "Adjust the bar!";       // it doesn't  matter that I'm using innerText b/c i don't have a back-end
+    commentary2.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards";
+    setTimeout(function MakeCommentDisapear(){
+    commentary2.innerText="";
+    }, 4200)
 }
 changeCommentary()
 //setTimeout(changeCommentary, 1200)
@@ -543,7 +556,12 @@ changeCommentary()
 document.addEventListener('input', function(event){
     if (!event.target.matches('#range')) return;
     console.log(event.target.value)
+     
+    commentary3.style.cssText = "visibility: visible; animation: blink 1.2s linear 4 forwards";
    
+    setTimeout( function makeCommentInvisible() {
+        commentary3.innerHTML = ""
+    } , 4200)
     if (event.target.value < 10){
         // color lighter
     rangeValue.innerText = event.target.value + "Tone";
@@ -555,7 +573,7 @@ document.addEventListener('input', function(event){
      }
      if (event.target.value > 10){
         // color darker
-        rangeValue.innerText = event.target.value -10 + " Shade";
+        rangeValue.innerText = event.target.value -10 + "Shade";
         let newValue = event.target.value - 11;
         console.log(newValue)
     findDarkColor[newValue]()
