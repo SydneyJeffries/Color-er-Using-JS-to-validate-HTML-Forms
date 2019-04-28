@@ -10,3 +10,4 @@ I started this project because I was reading about form validation and over-all 
    
    
 <img src="https://i.ibb.co/B4jS3cG/Capturefinal.jpg" text-align="center" alt="Capturefinal" border="0">
+<p> ** no need for bootstrap or any frame works in this project. I usually don't struggle with making things responsive pure CSS
