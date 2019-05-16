@@ -16,4 +16,4 @@ I started this project because I was reading about form validation and validatio
 </p>
 
 <p>** no need for Bootstrap or any frameworks in this project. I usually don't struggle with making things responsive in pure CSS. 
- I took a mobile first approach, started the styles for smaller screen sizes at the top of my style sheet and included a single media query for bigger screens. 
+ I took a mobile first approach, started the styles for smaller screen sizes at the top of my style sheet and included a single media query for bigger screens. My styling wasn't  my main focus for this gadget. My main focus was flexing my new Javascript skills. 
