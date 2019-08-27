@@ -9,7 +9,7 @@ I started this project because I was reading about form validation and validatio
  Pick a color with the color picker and I'll return tones, shades, hexacodes and show you color theme inspiration. <a href="http://www.squid-inc.org/Color-ER"> View it on my new website :) </a>
    
 <p align="center" >  
-<img src="https://i.ibb.co/B4jS3cG/Capturefinal.jpg"  alt="Capturefinal" border="0">
+<a href="https://ibb.co/wpcCJvC"><img src="https://i.ibb.co/F8HJsPJ/Coler-ER.jpg" alt="Coler-ER" border="0"></a><br /><a target='_blank' href='https://imgbb.com/'>free photo hosting</a><br />
   </p>
  <p align="center" > 
 <img src="https://i.ibb.co/Q88CySv/Pic-of-draft.png" alt="Pic-of-draft" align="center"  border="0">
